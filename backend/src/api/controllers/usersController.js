@@ -6,7 +6,7 @@ const {
   created, success,
 } = require('../utils/dictionary/statusCode');
 
-const {createToken} = require('../middlewares/auth')
+const { createToken } = require('../middlewares/auth')
 
 
 const addUsers = async (req, res, next) => {
