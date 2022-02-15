@@ -1,7 +1,11 @@
 const express = require('express');
 
 const { addUsers, login } = require('../controllers/usersController');
-const { createTask, getAllTask } = require('../controllers/taskController');
+const {
+  createTask,
+  getAllTask,
+  updateTask,
+} = require('../controllers/taskController');
 
 const { validateToken } = require('../middlewares/auth');
 
@@ -12,5 +16,7 @@ router.post('/login', login);
 
 router.post('/task', validateToken, createTask);
 router.get('/task', getAllTask);
+
+router.put('/task/:id', validateToken, updateTask);
 
 module.exports = router;

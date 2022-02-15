@@ -15,7 +15,7 @@ const validateToken = (req, res, next) => {
     const Payload = validate(authorization);
 
     req.user = Payload.payload;
-console.log(req.user, 'req.user');
+
     next();
   } catch (error) {
     res.status(401).json({ message: 'Expired or invalid token' });
