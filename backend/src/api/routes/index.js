@@ -22,5 +22,11 @@ router.get('/task/:id', validateToken, getByIdTask);
 router.put('/task/:id', validateToken, updateTask);
 router.delete('/task/:id', validateToken, excludeTask);
 
+const apiRoutes = express.Router();
+apiRoutes.post('/users', addUsers);
+
+const app = express();
+
+app.use(apiRoutes);
 
 module.exports = router;
