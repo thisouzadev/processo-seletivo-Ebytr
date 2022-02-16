@@ -22,8 +22,17 @@ const update = async (id, task) => {
   );
   return result;
 };
+
+const findById = async (id) => {
+  const db = await connect();
+  const insertedId = await db.collection('tasks').findOne({ _id: ObjectId(id) });
+
+  return insertedId;
+};
+
 module.exports = {
   createTask,
   findAll,
   update,
+  findById,
 };

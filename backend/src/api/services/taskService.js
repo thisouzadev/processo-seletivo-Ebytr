@@ -3,12 +3,13 @@ const Joi = require('@hapi/joi');
 const errorConstructor = require('../utils/functions/errorHandling');
 const { badRequest, notFound } = require('../utils/dictionary/statusCode');
 
-const { createTask } = require('../models/taskModel')
+const { createTask, findById } = require('../models/taskModel')
 
 const schematask = Joi.object({
   status: Joi.string().required(),
   task: Joi.string().required(),
 });
+const idSchema = Joi.string().length(24);
 
 const TaskCreate = async (status, task, userId) => {
   const { error } = schematask.validate({
@@ -20,6 +21,14 @@ const TaskCreate = async (status, task, userId) => {
   return id;
 };
 
+const findByIdOneTask = async (id) => {
+  const { error } = idSchema.validate(id);
+  if (error) throw errorConstructor(notFound, 'task not found');
+  const product = await findById(id);
+  return product;
+};
+
 module.exports = {
-  TaskCreate
+  TaskCreate,
+  findByIdOneTask,
 };

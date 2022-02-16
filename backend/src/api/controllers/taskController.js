@@ -1,5 +1,5 @@
 const { findAll, update } = require('../models/taskModel');
-const { TaskCreate } = require('../services/taskService');
+const { TaskCreate, findByIdOneTask } = require('../services/taskService');
 const { created, success } = require('../utils/dictionary/statusCode');
 
 const createTask = async (req, res, next) => {
@@ -38,8 +38,22 @@ const updateTask = async (req, res, next) => {
   }
 };
 
+const getByIdTask = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const task = await findByIdOneTask(id);
+
+    if (task.error) return next(task.error);
+    return res.status(success).json(task);
+  } catch (error) {
+    console.log(`POST FINDBYIDTASK -> ${error.message}`);
+    return next(error);
+  }
+};
+
 module.exports = {
   createTask,
   getAllTask,
   updateTask,
+  getByIdTask,
 };
