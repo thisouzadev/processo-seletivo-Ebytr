@@ -30,9 +30,17 @@ const findById = async (id) => {
   return insertedId;
 };
 
+const exclude = async (id) => {
+  const db = await connect();
+  const recipe = await findById(id);
+  await db.collection('tasks').deleteOne({ _id: ObjectId(id) });
+  return recipe;
+};
+
 module.exports = {
   createTask,
   findAll,
   update,
   findById,
+  exclude,
 };

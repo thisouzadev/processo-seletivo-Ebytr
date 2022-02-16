@@ -1,6 +1,6 @@
-const { findAll, update } = require('../models/taskModel');
+const { findAll, update, exclude } = require('../models/taskModel');
 const { TaskCreate, findByIdOneTask } = require('../services/taskService');
-const { created, success } = require('../utils/dictionary/statusCode');
+const { created, success, noContent } = require('../utils/dictionary/statusCode');
 
 const createTask = async (req, res, next) => {
   try {
@@ -46,14 +46,25 @@ const getByIdTask = async (req, res, next) => {
     if (task.error) return next(task.error);
     return res.status(success).json(task);
   } catch (error) {
-    console.log(`POST FINDBYIDTASK -> ${error.message}`);
+    console.log(`GET FINDBYIDTASK -> ${error.message}`);
     return next(error);
   }
 };
 
+const excludeTask = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const task = await exclude(id);
+    return res.status(noContent).json(task);
+  } catch (error) {
+    console.log(`DELETE DELETETASK -> ${error.message}`);
+    return next(error);
+  }
+}
 module.exports = {
   createTask,
   getAllTask,
   updateTask,
   getByIdTask,
+  excludeTask
 };
