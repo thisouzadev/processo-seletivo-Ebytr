@@ -34,7 +34,7 @@ Para conseguir utilizar a API, através da sua IDE, siga os passos abaixo.
 
 ### Pré-requisitos
 
-Antes de seguirmos para as configurações e uso da API, é ideal que você tenha o ambiente configurado para usar a API, para isso você deve instalar: /n
+Antes de seguirmos para as configurações e uso da API, é ideal que você tenha o ambiente configurado para usar a API, para isso você deve instalar: <br /> 
 <img align="center" alt="nodejs" height="45" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
 <img align="center" alt="mongodb" height="45" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg">
 
@@ -113,48 +113,48 @@ Contribuições são o que fazem a comunidade open source um lugar incrível par
 <!-- rest API -->
 
 1. cria o usuario
-
+<br /> 
 POST http://localhost:3000/users
 {
   "name": "rogerinhoo",
   "email": "example@email.com",
   "password": "senha123"
 }
-
+<br /> 
 2. login
-
+<br /> 
 POST http://localhost:3000/login
 {
   "email": "example@email.com",
   "password": "senha123"
 }
-
+<br /> 
 3. cria a tarefa
-
+<br /> 
 post http://localhost:3000/task
 {
 	"status": "pendente",
 	"task": "fazer um bolo"
 }
-
+<br /> 
 4. pega todas as tarefas
-
+<br /> 
 GET http://localhost:3000/task
-
+<br /> 
 5. update na tarefa selecionada pelo id
-
+<br /> 
 PUT http://localhost:3000/task/:id
 {
 	"status": "andamento",
 	"task": "bolo no forno"
 }
-
+<br /> 
 6. pega a tarefa selecionada pelo id
-
+<br /> 
 GET http://localhost:3000/task/:id
-
+<br /> 
 7. delete a tarefa pelo id
-
+<br /> 
 DELETE http://localhost:3000/task
 
 <!-- CONTACT -->
