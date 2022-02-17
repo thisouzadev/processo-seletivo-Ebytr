@@ -112,6 +112,8 @@ Contribuições são o que fazem a comunidade open source um lugar incrível par
 
 <!-- rest API -->
 
+## Rest API
+
 1. cria o usuario
 
 POST http://localhost:3000/users
