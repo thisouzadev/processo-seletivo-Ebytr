@@ -7,6 +7,7 @@
   - [Estrutura de Arquivos](#estrutura-de-arquivos)
   - [Instalação](#instala%C3%A7%C3%A3o)
 - [Contribuição](#contribui%C3%A7%C3%A3o)
+- [Rest API](#rest-api)
 - [Licença](#licen%C3%A7a)
 - [Contato](#contato)
 
