@@ -35,8 +35,8 @@ Para conseguir utilizar a API, através da sua IDE, siga os passos abaixo.
 ### Pré-requisitos
 
 Antes de seguirmos para as configurações e uso da API, é ideal que você tenha o ambiente configurado para usar a API, para isso você deve instalar: <br /> 
-<img align="center" alt="nodejs" height="45" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
-<img align="center" alt="mongodb" height="45" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg">
+1. MongoDB
+2. NodeJs
 
 ### Estrutura de Arquivos
 
@@ -88,7 +88,7 @@ backend
 
 - `git clone git@github.com:thisouzadev/processo-seletivo-Ebytr.git`.
 - Entre na pasta do repositório que você acabou de clonar:
-  - `cd sd-0x-cookmaster`
+  - `cd backend`
 
 2. Instale as dependências
 
