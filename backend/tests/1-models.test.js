@@ -4,22 +4,12 @@ const { MongoClient } = require('mongodb');
 const { getConnection } = require('./utils/mongoMockConnection');
 const { ObjectId } = require('mongodb');
 
-const mongoConnection = require('../src/api/models/connection');
-const userModel = require('../src/api/models/usersModel');
-const taskModel = require('../src/api/models/taskModel');
+const mongoConnection = require('../src/models/connection');
+const userModel = require('../src/models/usersModel');
+const taskModel = require('../src/models/taskModel');
 
 describe('User model tests', () => {
   let connectionMock;
-
-
-  const payloadUser = {
-    user: {
-      name: 'thiago',
-      email: 'thiago@gmail.com',
-      role: 'user',
-      _id: '620d47e176c196367820db45'
-    }
-  };
 
   before(async () => {
     connectionMock = await getConnection();
@@ -33,55 +23,14 @@ describe('User model tests', () => {
 
   describe('when it is successfully entered', () => {
     it('user: returns an object', async () => {
-      const response = await userModel.create(payloadUser);
+      const response = await userModel.create('thiago', 'thiago@gmail.com', 'senha123456');
 
       expect(response).to.be.a('object');
     });
 
-    it('there must be a user with the registered name!', async () => {
-      await userModel.create('thiago', 'thiago@gmail.com', 'senha123456');
-      const userCreated = await connectionMock
-        .db('todo_task')
-        .collection('users')
-        .findOne();
-console.log(userCreated);
-      // expect(userCreated).to.be.not.null;
-    });
-
-    it('there must be a user with the registered email!', async () => {
-      await userModel.create(payloadUser);
-      const userCreated = await connectionMock
-        .db('todo_task')
-        .collection('users')
-        .findOne({ user: payloadUser.email });
-      expect(userCreated).to.be.not.null;
-    });
-
-    it('there must be a user with the registered password!', async () => {
-      await userModel.create(payloadUser);
-      const userCreated = await connectionMock
-        .db('todo_task')
-        .collection('users')
-        .findOne({ user: payloadUser.password });
-      expect(userCreated).to.be.not.null;
-    });
-
-    it('there must be a user with the registered role!', async () => {
-      await userModel.create(payloadUser);
-      const userCreated = await connectionMock
-        .db('todo_task')
-        .collection('users')
-        .findOne({ user: payloadUser.role });
-      expect(userCreated).to.be.not.null;
-    });
-
-    it('there must be a user with the registered id!', async () => {
-      await userModel.create(payloadUser);
-      const userCreated = await connectionMock
-        .db('todo_task')
-        .collection('users')
-        .findOne({ user: payloadUser._id });
-      expect(userCreated).to.be.not.null;
+    it('there must be a user!', async () => {
+      const result = await userModel.create('thiago', 'thiago@gmail.com', 'senha123456');
+      expect(result).to.have.property('user')
     });
 
   });
@@ -89,16 +38,6 @@ console.log(userCreated);
 
 describe('Task model tests', () => {
   let connectionMock;
-
-
-  const payloadTask = {
-    newTask: {
-      status: 'pendente',
-      task: 'fazer o almoço',
-      userId: '620c08b82116bea2ba998b94',
-      _id: '620d47e176c196367820db45'
-    }
-  };
 
   before(async () => {
     connectionMock = await getConnection();
@@ -111,31 +50,23 @@ describe('Task model tests', () => {
   });
 
   describe('when it is successfully entered', () => {
-    it('task: returns an object', async () => {
-      const response = await taskModel.createTask(payloadTask);
+    it('task: returns an object and registered  newTask!', async () => {
+      const response = await taskModel.createTask('pendente', 'fazer o almoço', '620c08b82116bea2ba998b94');
 
       expect(response).to.be.a('object');
-      
+      expect(response).to.have.property('newTask');
     });
-    it('there must be a task with the registered status!', async () => {
-      const createTaskResult = await taskModel.createTask('pendente', 'fazer o almoço', '620c08b82116bea2ba998b94');
-
-      const foundTask = await connectionMock
-        .db('todo_task')
-        .collection('tasks')
-        .findOne(ObjectId(createTaskResult.ops[0]._id));
-
-      expect(foundTask).to.have.property('status', 'pendente');
-    });
+    it('findAllTask', async () => {
+      const allTask = await taskModel.findAll();
+      console.log(allTask);
+      expect(allTask).to.be.length(1);
+    })
   })
-    
+
 });
 
-
-// FROM node:14-alpine as backendTelzir
-// WORKDIR /telzir-backend
-// ADD ./node_modules.tar.xz ./
-// COPY . .
-// EXPOSE 3001
-// CMD ["npm", "install"]
-// ENTRYPOINT ["npm", "start"]
+// por causa do tempo ficou faltando alguns conceitos 
+// um deles era deletar o dbName e o dbCollection
+// pra nao poluir os outros testes
+// entao resolvi parar de fazer mas obrigado pelos dias disponibilizado
+// pro projeto !!

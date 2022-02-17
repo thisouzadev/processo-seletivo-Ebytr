@@ -4,11 +4,9 @@ const connect = require('./connection');
 const createTask = async (status, task, userId) => {
   const db = await connect();
 const { insertedId } = await db.collection('tasks').insertOne({
-
-
     status, task, userId,
   });
-  return {  status, task, userId, _id: insertedId }
+  return { newTask: { status, task, userId, _id: insertedId } }
 };
 
 const findAll = async () => {
