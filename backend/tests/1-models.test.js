@@ -4,22 +4,12 @@ const { MongoClient } = require('mongodb');
 const { getConnection } = require('./utils/mongoMockConnection');
 const { ObjectId } = require('mongodb');
 
-const mongoConnection = require('../src/api/models/connection');
-const userModel = require('../src/api/models/usersModel');
-const taskModel = require('../src/api/models/taskModel');
+const mongoConnection = require('../src/models/connection');
+const userModel = require('../src/models/usersModel');
+const taskModel = require('../src/models/taskModel');
 
 describe('User model tests', () => {
   let connectionMock;
-
-
-  const payloadUser = {
-    user: {
-      name: 'thiago',
-      email: 'thiago@gmail.com',
-      role: 'user',
-      _id: '620d47e176c196367820db45'
-    }
-  };
 
   before(async () => {
     connectionMock = await getConnection();
@@ -39,17 +29,17 @@ describe('User model tests', () => {
     });
 
     it('there must be a user with the registered name!', async () => {
-      await userModel.create('thiago', 'thiago@gmail.com', 'senha123456');
+      const ddsa = await userModel.create('thiago', 'thiago@gmail.com', 'senha123456');
       const userCreated = await connectionMock
         .db('todo_task')
         .collection('users')
-        .findOne();
-console.log(userCreated);
-      // expect(userCreated).to.be.not.null;
+        .findOne(name);
+
+      expect(userCreated).to.be.not.null;
     });
 
     it('there must be a user with the registered email!', async () => {
-      await userModel.create(payloadUser);
+      await userModel.create('thiago', 'thiago@gmail.com', 'senha123456');
       const userCreated = await connectionMock
         .db('todo_task')
         .collection('users')
@@ -58,7 +48,7 @@ console.log(userCreated);
     });
 
     it('there must be a user with the registered password!', async () => {
-      await userModel.create(payloadUser);
+      await userModel.create('thiago', 'thiago@gmail.com', 'senha123456');
       const userCreated = await connectionMock
         .db('todo_task')
         .collection('users')
@@ -67,20 +57,11 @@ console.log(userCreated);
     });
 
     it('there must be a user with the registered role!', async () => {
-      await userModel.create(payloadUser);
+      await userModel.create('thiago', 'thiago@gmail.com', 'senha123456');
       const userCreated = await connectionMock
         .db('todo_task')
         .collection('users')
-        .findOne({ user: payloadUser.role });
-      expect(userCreated).to.be.not.null;
-    });
-
-    it('there must be a user with the registered id!', async () => {
-      await userModel.create(payloadUser);
-      const userCreated = await connectionMock
-        .db('todo_task')
-        .collection('users')
-        .findOne({ user: payloadUser._id });
+        .findOne({ user: role });
       expect(userCreated).to.be.not.null;
     });
 
@@ -131,11 +112,11 @@ describe('Task model tests', () => {
     
 });
 
-
-// FROM node:14-alpine as backendTelzir
-// WORKDIR /telzir-backend
-// ADD ./node_modules.tar.xz ./
-// COPY . .
-// EXPOSE 3001
-// CMD ["npm", "install"]
-// ENTRYPOINT ["npm", "start"]
+// {
+//   user: {
+//     name: 'thiago',
+//     email: 'thiago@gmail.com',
+//     role: 'user',
+//     _id: 620e4571bf8cbe5df284bdcf
+//   }
+// }
