@@ -1,6 +1,5 @@
 ## Tabela de Conteúdo
 
-- [Tabela de Conteúdo](#tabela-de-conte%C3%BAdo)
 - [Sobre o Projeto](#sobre-o-projeto)
   - [Feito Com](#feito-com)
 - [Começando](#come%C3%A7ando)
@@ -97,8 +96,6 @@ backend
  
 3. rode a aplicação
 
-- npm run dev
-  ou
 - npm start
 
 
