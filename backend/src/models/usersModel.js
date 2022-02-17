@@ -6,7 +6,7 @@ const create = async (name, email, password) => {
     name, email, password,
   });
 
-  return { user: { name, email, role: 'user', _id: insertedId } };
+  return  { user: { name, email, role: 'user', _id: insertedId } };
 };
 
 const findUser = async (email) => {
