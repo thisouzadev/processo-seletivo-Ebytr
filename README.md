@@ -117,7 +117,7 @@ Contribuições são o que fazem a comunidade open source um lugar incrível par
 
 ## Contato
 
-thiago souza - https://github.com/thisouzadev
+github - https://github.com/thisouzadev
 linkedin - https://www.linkedin.com/in/thisouzadev/
 
 
