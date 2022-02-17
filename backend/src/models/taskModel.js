@@ -13,7 +13,7 @@ const { insertedId } = await db.collection('tasks').insertOne({
 
 const findAll = async () => {
   const db = await connect();
-  const task = await db.collection('tasks').find({}).toArray();
+  const task = await db.collection('tasks').find({}).toArray().sorte({ name: 1 });
   return task;
 };
 
