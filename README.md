@@ -34,7 +34,7 @@ Para conseguir utilizar a API, através da sua IDE, siga os passos abaixo.
 
 ### Pré-requisitos
 
-Antes de seguirmos para as configurações e uso da API, é ideal que você tenha o ambiente configurado para usar a API, para isso você deve instalar:
+Antes de seguirmos para as configurações e uso da API, é ideal que você tenha o ambiente configurado para usar a API, para isso você deve instalar: /n
 <img align="center" alt="nodejs" height="45" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
 <img align="center" alt="mongodb" height="45" width="60" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg">
 
