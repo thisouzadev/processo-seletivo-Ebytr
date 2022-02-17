@@ -113,48 +113,48 @@ Contribuições são o que fazem a comunidade open source um lugar incrível par
 <!-- rest API -->
 
 1. cria o usuario
-<br /> 
+
 POST http://localhost:3000/users
 {
   "name": "rogerinhoo",
   "email": "example@email.com",
   "password": "senha123"
 }
-<br /> 
+
 2. login
-<br /> 
+
 POST http://localhost:3000/login
 {
   "email": "example@email.com",
   "password": "senha123"
 }
-<br /> 
+
 3. cria a tarefa
-<br /> 
+
 post http://localhost:3000/task
 {
 	"status": "pendente",
 	"task": "fazer um bolo"
 }
-<br /> 
+
 4. pega todas as tarefas
-<br /> 
+
 GET http://localhost:3000/task
-<br /> 
+
 5. update na tarefa selecionada pelo id
-<br /> 
+
 PUT http://localhost:3000/task/:id
 {
 	"status": "andamento",
 	"task": "bolo no forno"
 }
-<br /> 
+
 6. pega a tarefa selecionada pelo id
-<br /> 
+
 GET http://localhost:3000/task/:id
-<br /> 
+
 7. delete a tarefa pelo id
-<br /> 
+ 
 DELETE http://localhost:3000/task
 
 <!-- CONTACT -->
