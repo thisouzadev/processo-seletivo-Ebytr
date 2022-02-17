@@ -110,8 +110,52 @@ Contribuições são o que fazem a comunidade open source um lugar incrível par
 5. Faça o Push da Branch (`git push origin feature/FeatureIncrivel`)
 6. Abra uma Pull Request
 
-<!-- LICENSE -->
+<!-- rest API -->
 
+1. cria o usuario
+
+POST http://localhost:3000/users
+{
+  "name": "rogerinhoo",
+  "email": "example@email.com",
+  "password": "senha123"
+}
+
+2. login
+
+POST http://localhost:3000/login
+{
+  "email": "example@email.com",
+  "password": "senha123"
+}
+
+3. cria a tarefa
+
+post http://localhost:3000/task
+{
+	"status": "pendente",
+	"task": "fazer um bolo"
+}
+
+4. pega todas as tarefas
+
+GET http://localhost:3000/task
+
+5. update na tarefa selecionada pelo id
+
+PUT http://localhost:3000/task/:id
+{
+	"status": "andamento",
+	"task": "bolo no forno"
+}
+
+6. pega a tarefa selecionada pelo id
+
+GET http://localhost:3000/task/:id
+
+7. delete a tarefa pelo id
+
+DELETE http://localhost:3000/task
 
 <!-- CONTACT -->
 
