@@ -50,26 +50,23 @@ describe('Task model tests', () => {
   });
 
   describe('when it is successfully entered', () => {
-    it('task: returns an object', async () => {
+    it('task: returns an object and registered  newTask!', async () => {
       const response = await taskModel.createTask('pendente', 'fazer o almoço', '620c08b82116bea2ba998b94');
 
       expect(response).to.be.a('object');
-
-    });
-    it('registered  newTask!', async () => {
-      const response = await taskModel.createTask('pendente', 'fazer o almoço', '620c08b82116bea2ba998b94');
-console.log(response);
       expect(response).to.have.property('newTask');
     });
+    it('findAllTask', async () => {
+      const allTask = await taskModel.findAll();
+      console.log(allTask);
+      expect(allTask).to.be.length(1);
+    })
   })
 
 });
 
-// {
-//   user: {
-//     name: 'thiago',
-//     email: 'thiago@gmail.com',
-//     role: 'user',
-//     _id: 620e4571bf8cbe5df284bdcf
-//   }
-// }
+// por causa do tempo ficou faltando alguns conceitos 
+// um deles era deletar o dbName e o dbCollection
+// pra nao poluir os outros testes
+// entao resolvi parar de fazer mas obrigado pelos dias disponibilizado
+// pro projeto !!
