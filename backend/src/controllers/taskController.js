@@ -5,9 +5,8 @@ const { created, success, noContent } = require('../utils/dictionary/statusCode'
 const createTask = async (req, res, next) => {
   try {
     const { status, task} = req.body;
-    const { _id: userId} = req.user;
 
-    const addTask = await TaskCreate(status, task, userId);
+    const addTask = await TaskCreate(status, task);
     return res.status(created).json(addTask);
   } catch (error) {
     console.log(`POST CREATETASK -> ${error.message}`);
@@ -27,11 +26,11 @@ const getAllTask = async (req, res, next) => {
 
 const updateTask = async (req, res, next) => {
   try {
-    const { params: { id }, body: task, user: { _id } } = req;
+    const { params: { id }, body: task } = req;
 
     await update(id, task);
 
-    res.status(200).json({ _id: id, ...task, userId: _id });
+    res.status(200).json({ _id: id, ...task });
   } catch (error) {
     console.log(`PUT UPDATETask -> ${error.message}`);
     next(error);
