@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import TaskForm from "./components/taskform/TaskForm";
+import TaskCreate from "./components/taskCreate/TaskCreate";
 import TaskTable from "./components/taskTable/TaskTable";
 
 function App() {
   return (
     <div className="App">
-      <TaskForm />
+      <TaskCreate />
       <TaskTable />
     </div>
   );

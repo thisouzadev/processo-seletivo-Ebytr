@@ -13,7 +13,7 @@ export default function TaskTable() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [setTasks]);
 
   const handleChange = (string) => { 
     setSearch(string);
@@ -60,8 +60,13 @@ export default function TaskTable() {
                         </td>
                       ))
                     }
-                    <button>update</button>
-                    <button>delete</button>
+                    {/* {console.log(task._id)} */}
+                    <tr>
+                      <td>
+                        <button>update</button>
+                        <button>delete</button>
+                      </td>
+                    </tr>
                   </tr>
                 ))
             }
