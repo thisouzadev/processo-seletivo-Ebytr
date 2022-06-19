@@ -12,11 +12,11 @@ const schematask = Joi.object({
 const idSchema = Joi.string().length(24);
 
 const TaskCreate = async (status, task) => {
-  const { error } = schematask.validate({
+  /* const { error } = schematask.validate({
     status, task,
   });
 
-  if (error) throw errorConstructor(badRequest, 'Invalid entries. Try again.');
+  if (error) throw errorConstructor(badRequest, 'Invalid entries. Try again.'); */
   const id = await createTask(status, task);
   return id;
 };

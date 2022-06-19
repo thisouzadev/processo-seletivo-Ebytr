@@ -4,6 +4,8 @@ import TaskService from "../../services/task.services";
 export default function TaskTable() {
   const [tasks, setTasks] = useState([]);
   const [search, setSearch] = useState("");
+  // const [id, setId] = useState("");
+
   useEffect(() => {
     new TaskService()
       .allTask()
@@ -13,7 +15,7 @@ export default function TaskTable() {
       .catch((err) => {
         console.log(err);
       });
-  }, [setTasks]);
+  }, [tasks]);
 
   const handleChange = (string) => { 
     setSearch(string);
@@ -23,6 +25,11 @@ export default function TaskTable() {
     element.task.toLowerCase().includes(search.toLowerCase())
   )); 
 
+  const deleteTask = (id) => {
+    new TaskService().delete(id);
+  };
+
+  
   if(tasks.length > 0) {
     return (
       <div>
@@ -31,7 +38,7 @@ export default function TaskTable() {
         filtro por tarefas:
             <input
               data-testid="name-search"
-              onChange={ (event) => handleChange(event.target.value ,console.log(event.target.value)) }
+              onChange={ (event) => handleChange(event.target.value) }
               type="text"
               name="searchTask"
             />
@@ -56,15 +63,13 @@ export default function TaskTable() {
                       Object.values(task).map((info, index2) => (
                         <td key={ index2 }>
                           {info}
-                          
                         </td>
                       ))
                     }
-                    {/* {console.log(task._id)} */}
-                    <tr>
+                    <tr key={index}>
                       <td>
                         <button>update</button>
-                        <button>delete</button>
+                        <button onClick={ () => { deleteTask(task._id); } }>delete</button>
                       </td>
                     </tr>
                   </tr>

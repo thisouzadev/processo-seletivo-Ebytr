@@ -6,7 +6,7 @@ const createTask = async (status, task) => {
 const { insertedId } = await db.collection('tasks').insertOne({
     status, task,
   });
-  return { newTask: { status, task, _id: insertedId } }
+  return {status, task, _id: insertedId}
 };
 
 const findAll = async () => {
