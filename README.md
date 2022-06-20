@@ -137,7 +137,7 @@ GET http://localhost:3000/task/:id
 
 5. delete a tarefa pelo id
  
-DELETE http://localhost:3000/task
+DELETE http://localhost:3000/task:id
 
 <!-- CONTACT -->
 
