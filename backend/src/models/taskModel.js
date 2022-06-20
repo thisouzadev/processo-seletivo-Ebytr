@@ -11,7 +11,7 @@ const { insertedId } = await db.collection('tasks').insertOne({
 
 const findAll = async () => {
   const db = await connect();
-  const task = await db.collection('tasks').find({}).toArray();
+  const task = await db.collection('tasks').find({}).sort({status: 1, task: 1}).toArray();
   return task;
 };
 

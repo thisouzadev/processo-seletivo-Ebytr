@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {  useContext, useEffect, useState } from "react";
 import TaskService from "../../services/task.services";
+import contextValue from "../../context/context";
 
 export default function TaskTable() {
   const [tasks, setTasks] = useState([]);
   const [search, setSearch] = useState("");
-  // const [id, setId] = useState("");
+  const {setShow, setStatus, setTask, setId} = useContext(contextValue);
 
   useEffect(() => {
     new TaskService()
@@ -15,7 +16,7 @@ export default function TaskTable() {
       .catch((err) => {
         console.log(err);
       });
-  }, [tasks]);
+  }, [setTasks, tasks]);
 
   const handleChange = (string) => { 
     setSearch(string);
@@ -27,9 +28,13 @@ export default function TaskTable() {
 
   const deleteTask = (id) => {
     new TaskService().delete(id);
-  };
-
-  
+  }; 
+  const updateTask = (task) => {
+    setStatus(task.status);
+    setTask(task.task);
+    setId(task._id);
+    setShow(true);
+  }; 
   if(tasks.length > 0) {
     return (
       <div>
@@ -68,7 +73,9 @@ export default function TaskTable() {
                     }
                     <tr key={index}>
                       <td>
-                        <button>update</button>
+                        <button onClick={ () => { updateTask(task); } }>
+                            update
+                        </button>             
                         <button onClick={ () => { deleteTask(task._id); } }>delete</button>
                       </td>
                     </tr>

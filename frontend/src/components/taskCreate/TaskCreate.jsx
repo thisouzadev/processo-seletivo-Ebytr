@@ -5,11 +5,9 @@ export default function TaskCreate() {
   const [status, setStatus] = useState("pendente");
   const [task, setTask] = useState("");
  
-  console.log(status, task);
   const createTask = () => {
     new TaskService()
       .create(status, task);
-    console.log(status, task);
   };
   const handleButton = (event) => {
     event.preventDefault();

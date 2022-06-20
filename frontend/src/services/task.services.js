@@ -30,6 +30,18 @@ class TaskService {
     });
     return response;
   }
+
+  async update(id, status, task){
+    const response = await axios({
+      method: "put",
+      url: `http://localhost:3000/task/${id}`,
+      data: {
+        status,
+        task,
+      },
+    });
+    return response;
+  }
 }
 
 export default TaskService;
